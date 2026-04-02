@@ -1,0 +1,23 @@
+{
+  "name": "ZITADEL Example .NET Auth",
+  "image": "mcr.microsoft.com/devcontainers/dotnet:8.0-bookworm",
+  "forwardPorts": [3000],
+  "portsAttributes": {
+    "3000": {
+      "label": "Application",
+      "onAutoForward": "notify"
+    }
+  },
+  "otherPortsAttributes": {
+    "onAutoForward": "silent"
+  },
+  "onCreateCommand": "cp -n .env.example .env",
+  "updateContentCommand": "dotnet restore",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-dotnettools.csdevkit"
+      ]
+    }
+  }
+}

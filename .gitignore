@@ -6,5 +6,8 @@
 bin/
 obj/
 
+# Environment
+.env
+
 # Devbox generated files
 .devbox/

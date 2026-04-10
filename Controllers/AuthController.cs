@@ -11,11 +11,13 @@ namespace example_dotnet_auth.Controllers;
 public class AuthController : Controller
 {
   private readonly IAntiforgery _antiforgery;
+  private readonly string _postLoginRedirect;
   private readonly string _postLogoutRedirect;
 
   public AuthController(IAntiforgery antiforgery, IConfiguration configuration)
   {
     _antiforgery = antiforgery;
+    _postLoginRedirect = configuration["ZITADEL_POST_LOGIN_URL"] ?? "/profile";
     _postLogoutRedirect = configuration["ZITADEL_POST_LOGOUT_URL"] ?? "http://localhost:3000/auth/logout/callback";
   }
 
@@ -32,7 +34,7 @@ public class AuthController : Controller
     var model = new SignInViewModel
     {
       Providers = new List<ProviderViewModel> { provider },
-      CallbackUrl = string.IsNullOrWhiteSpace(callbackUrl) ? "/profile" : callbackUrl
+      CallbackUrl = string.IsNullOrWhiteSpace(callbackUrl) ? _postLoginRedirect : callbackUrl
     };
 
     if (!string.IsNullOrWhiteSpace(error))
@@ -46,7 +48,7 @@ public class AuthController : Controller
   [HttpPost("signin/provider/zitadel")]
   public IActionResult SignInProvider([FromForm] string? callbackUrl)
   {
-    var redirect = string.IsNullOrWhiteSpace(callbackUrl) ? "/profile" : callbackUrl!;
+    var redirect = string.IsNullOrWhiteSpace(callbackUrl) ? _postLoginRedirect : callbackUrl!;
 
     return Challenge(new AuthenticationProperties
     {

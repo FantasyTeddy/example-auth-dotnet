@@ -75,7 +75,11 @@ ZITADEL_POST_LOGOUT_URL="http://localhost:3000/auth/logout/callback"
 Follow these steps to get the application running:
 
 ```bash
-# Start the development server (restores dependencies automatically)
+# 1. Clone the repository
+git clone git@github.com:zitadel/example-auth-dotnet.git
+cd example-auth-dotnet
+
+# 2. Start the development server (restores dependencies automatically)
 make start
 ```
 

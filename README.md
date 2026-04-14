@@ -30,8 +30,8 @@ You'll need a ZITADEL account and application configured. Follow the [ZITADEL do
 
 > **Important:** Configure the following URLs in your ZITADEL application settings:
 >
->- **Redirect URIs:** Add `http://localhost:3000/auth/callback` (for development)
->- **Post Logout Redirect URIs:** Add `http://localhost:3000/auth/logout/callback` (for development)
+> -**Redirect URIs:** Add `http://localhost:3000/auth/callback` (for development)
+> -**Post Logout Redirect URIs:** Add `http://localhost:3000/auth/logout/callback` (for development)
 >
 >  These URLs must exactly match what your ASP.NET Core application uses. For production, add your production URLs.
 
@@ -104,3 +104,8 @@ Complete logout implementation that properly terminates both the local session a
 ### 1. Security headers
 
 Consider adding security headers middleware (e.g., CSP, Referrer-Policy, Permissions-Policy) appropriate for your deployment.
+
+## Resources
+
+- **ASP.NET Core Documentation:** <https://learn.microsoft.com/aspnet/core/>
+- **ZITADEL Documentation:** <https://zitadel.com/docs>

@@ -7,41 +7,41 @@ namespace example_dotnet_auth.Controllers;
 
 public class HomeController : Controller
 {
-  [HttpGet("/")]
-  public IActionResult Index()
-  {
-    var model = new HomeViewModel
+    [HttpGet("/")]
+    public IActionResult Index()
     {
-      IsAuthenticated = User?.Identity?.IsAuthenticated ?? false,
-      LoginUrl = "/auth/signin/provider/zitadel"
-    };
+        var model = new HomeViewModel
+        {
+            IsAuthenticated = User?.Identity?.IsAuthenticated ?? false,
+            LoginUrl = "/auth/signin/provider/zitadel"
+        };
 
-    return View("Index", model);
-  }
-
-  [HttpGet("/profile")]
-  public IActionResult Profile()
-  {
-    if (!(User?.Identity?.IsAuthenticated ?? false))
-    {
-      return Redirect("/auth/signin");
+        return View("Index", model);
     }
 
-    var claims = User?.Claims?.ToDictionary(c => c.Type, c => c.Value) ?? new Dictionary<string, string>();
-    var json = JsonSerializer.Serialize(claims, new JsonSerializerOptions { WriteIndented = true });
-
-    var model = new ProfileViewModel
+    [HttpGet("/profile")]
+    public IActionResult Profile()
     {
-      UserJson = json
-    };
+        if (!(User?.Identity?.IsAuthenticated ?? false))
+        {
+            return Redirect("/auth/signin");
+        }
 
-    return View("Profile", model);
-  }
+        var claims = User?.Claims?.ToDictionary(c => c.Type, c => c.Value) ?? new Dictionary<string, string>();
+        var json = JsonSerializer.Serialize(claims, new JsonSerializerOptions { WriteIndented = true });
 
-  [HttpGet("/not-found")]
-  public IActionResult NotFoundPage()
-  {
-    Response.StatusCode = StatusCodes.Status404NotFound;
-    return View("NotFound");
-  }
+        var model = new ProfileViewModel
+        {
+            UserJson = json
+        };
+
+        return View("Profile", model);
+    }
+
+    [HttpGet("/not-found")]
+    public IActionResult NotFoundPage()
+    {
+        Response.StatusCode = StatusCodes.Status404NotFound;
+        return View("NotFound");
+    }
 }

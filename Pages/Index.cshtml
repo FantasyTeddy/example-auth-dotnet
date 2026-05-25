@@ -103,6 +103,7 @@
                   </svg>
                   <span id="buttonText">Login</span>
                 </button>
+                @Html.AntiForgeryToken()
               </form>
 
               <div class="text-center">
@@ -172,34 +173,4 @@
       </div>
     </div>
   </footer>
-  <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-      const loginForm = document.getElementById('loginForm');
-      const loginButton = document.getElementById('loginButton');
-      const buttonText = document.getElementById('buttonText');
-
-      loginForm.onsubmit = async (e) => {
-        e.preventDefault();
-        loginButton.disabled = true;
-        buttonText.textContent = 'Loading…';
-        try {
-          const { csrfToken } = await fetch('/auth/csrf').then(r => r.json());
-          const input = Object.assign(
-            document.createElement('input'),
-            {
-              type: 'hidden',
-              name: 'csrfToken',
-              value: csrfToken
-            }
-          );
-          loginForm.appendChild(input);
-          loginForm.submit();
-        } catch (error) {
-          buttonText.textContent = 'Login';
-          loginButton.disabled = false;
-          alert('Failed to get login token, please try again');
-        }
-      }
-    });
-  </script>
 </div>

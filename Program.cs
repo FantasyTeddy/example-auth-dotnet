@@ -24,10 +24,6 @@ builder.WebHost.ConfigureKestrel(options =>
 });
 
 builder.Services.AddRazorPages();
-builder.Services.AddAntiforgery(options =>
-{
-    options.HeaderName = "X-CSRF-TOKEN";
-});
 
 builder.Services.AddSession(options =>
 {

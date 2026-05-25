@@ -35,6 +35,7 @@
               </svg>
               <span id="signinText">Sign in with @provider.Name</span>
             </button>
+            @Html.AntiForgeryToken()
           </form>
         </div>
       }
@@ -49,33 +50,4 @@
       </div>
     </div>
   </main>
-  <script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('signinForm');
-      const button = document.getElementById('signinButton');
-      const buttonText = document.getElementById('signinText');
-      if (form && button && buttonText) {
-        const originalText = buttonText.textContent;
-        form.addEventListener('submit', async function (e) {
-          e.preventDefault();
-          button.disabled = true;
-          buttonText.textContent = 'Signing in…';
-          try {
-            const response = await fetch('/auth/csrf');
-            const data = await response.json();
-            const input = document.createElement('input');
-            input.type = 'hidden';
-            input.name = 'csrfToken';
-            input.value = data.csrfToken;
-            form.appendChild(input);
-            form.submit();
-          } catch (error) {
-            alert('Sign-in failed. Please try again.');
-            button.disabled = false;
-            buttonText.textContent = originalText;
-          }
-        });
-      }
-    });
-  </script>
 </div>

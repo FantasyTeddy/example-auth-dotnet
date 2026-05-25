@@ -4,6 +4,9 @@
 .nuget/
 .dotnet/
 
+# User-specific files
+*.user
+
 # Build outputs
 bin/
 obj/

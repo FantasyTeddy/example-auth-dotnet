@@ -23,8 +23,7 @@ builder.WebHost.ConfigureKestrel(options =>
     options.ListenAnyIP(port);
 });
 
-builder.Services.AddControllersWithViews();
-builder.Services.AddHttpContextAccessor();
+builder.Services.AddRazorPages();
 builder.Services.AddAntiforgery(options =>
 {
     options.HeaderName = "X-CSRF-TOKEN";
@@ -105,15 +104,15 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseStatusCodePagesWithReExecute("/not-found");
-app.UseStaticFiles();
 
 app.UseRouting();
 app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+app.MapStaticAssets();
+app.MapRazorPages()
+    .WithStaticAssets();
+app.MapControllers();
 
 app.Run();

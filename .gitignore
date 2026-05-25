@@ -8,6 +8,9 @@
 bin/
 obj/
 
+# Visual Studio directory
+.vs/
+
 # Environment
 .env
 

@@ -3,9 +3,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Mvc;
-using example_dotnet_auth.ViewModels;
+using ExampleZitadelAuth.ViewModels;
 
-namespace example_dotnet_auth.Controllers;
+namespace ExampleZitadelAuth.Controllers;
 
 [Route("auth")]
 public class AuthController : Controller

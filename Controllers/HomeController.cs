@@ -1,9 +1,9 @@
 using System.Text.Json;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using example_dotnet_auth.ViewModels;
+using ExampleZitadelAuth.ViewModels;
 
-namespace example_dotnet_auth.Controllers;
+namespace ExampleZitadelAuth.Controllers;
 
 public class HomeController : Controller
 {

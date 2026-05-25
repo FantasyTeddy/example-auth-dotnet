@@ -1,4 +1,4 @@
-namespace example_dotnet_auth.ViewModels;
+namespace ExampleZitadelAuth.ViewModels;
 
 public class MessageViewModel
 {

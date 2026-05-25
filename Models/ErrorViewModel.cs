@@ -1,4 +1,4 @@
-namespace example_dotnet_auth.Models;
+namespace ExampleZitadelAuth.Models;
 
 public class ErrorViewModel
 {

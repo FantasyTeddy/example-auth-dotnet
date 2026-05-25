@@ -22,7 +22,7 @@ Before you begin, ensure you have the following:
 
 #### System Requirements
 
-- .NET SDK 8 or later (devbox provides it)
+- .NET SDK 10 or later (devbox provides it)
 
 #### Account Setup
 

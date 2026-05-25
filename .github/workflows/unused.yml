@@ -35,7 +35,7 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Install Dependencies
-        run: dotnet restore
+        run: dotnet restore example-auth-dotnet.slnx
 
       - name: Inspect Dependencies
         run: dotnet list package --include-transitive

@@ -42,10 +42,10 @@ jobs:
           dotnet-version: '10.0.x'
 
       - name: Restore Dependencies
-        run: dotnet restore
+        run: dotnet restore example-auth-dotnet.slnx
 
       - name: Run Formatter
-        run: dotnet format
+        run: dotnet format example-auth-dotnet.slnx
 
       - name: Commit Changes
         if: ${{ inputs.commit_changes == true }}
